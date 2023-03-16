@@ -14,13 +14,9 @@ export default defineConfig({
   },
   css: {
     preprocessorOptions: {
-      sass: {
+      scss: {
         implementation: sass,
-      },
-    },
-    loaderOptions: {
-      sass: {
-        prependData: `@import "@/assets/scss/main.scss";`,
+        additionalData: `@import "@/assets/styles/_variables.scss";`,
       },
     },
   },

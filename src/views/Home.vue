@@ -4,6 +4,4 @@
   <main></main>
 </template>
 
-<style lang="scss">
-@import "../assets/styles/views/home.scss";
-</style>
+<style lang="scss" scoped></style>
