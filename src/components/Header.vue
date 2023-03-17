@@ -8,15 +8,56 @@
         </div>
       </RouterLink>
       <div class="container-secondary">
-        <img class="icon" src="@/assets/images/icon-information.svg" />
+        <img
+          class="icon"
+          @click="toggleModal"
+          src="@/assets/images/icon-information.svg"
+        />
         <img class="icon" src="@/assets/images/icon-plus.svg" />
       </div>
-      <div></div>
+
+      <BaseModal :modalActive="modalActive" @close-modal="toggleModal">
+        <div class="modal-container">
+          <h1>About:</h1>
+          <p>
+            The Local Weather allows you to track the current and future weather
+            of cities of your choosing.
+          </p>
+          <h2>How it works:</h2>
+          <ol>
+            <li>
+              Search for your city by entering the name into the search bar.
+            </li>
+            <li>
+              Select a city within the results, this will take you to the
+              current weather for your selection.
+            </li>
+            <li>
+              Track the city by clicking the '+' icon in the top right. This
+              will save the city to view at a later time on the home page.
+            </li>
+          </ol>
+          <h2>Removing a city</h2>
+          <p>
+            If you no longer wish to track a city, simply select the city within
+            the home page. AT the bottom of the page, there will be an option to
+            delete a city.
+          </p>
+        </div>
+      </BaseModal>
     </nav>
   </header>
 </template>
 
-<script setup></script>
+<script setup>
+import { ref } from "vue";
+import BaseModal from "./BaseModal.vue";
+
+const modalActive = ref(null);
+const toggleModal = () => {
+  modalActive.value = !modalActive.value;
+};
+</script>
 
 <style lang="scss" scoped>
 .header {
@@ -82,6 +123,30 @@
 
   &__container--blue {
     background-color: $secondary-color;
+  }
+  .modal-container {
+    color: black;
+
+    h1 {
+      font-size: 1.5rem;
+      line-height: 2rem;
+      margin-bottom: 0.25rem;
+    }
+
+    h2 {
+      font-size: 1.5rem;
+      line-height: 2rem;
+    }
+
+    p {
+      margin-bottom: 1rem;
+    }
+
+    ol {
+      list-style-type: decimal;
+      list-style-position: inside;
+      margin-bottom: 1rem;
+    }
   }
 }
 </style>
