@@ -20,8 +20,8 @@
         <div class="modal-container">
           <h1>About:</h1>
           <p>
-            The Local Weather allows you to track the current and future weather
-            of cities of your choosing.
+            The Local Weather app allows you to track the current and future
+            weather of cities of your choosing.
           </p>
           <h2>How it works:</h2>
           <ol>
@@ -37,10 +37,10 @@
               will save the city to view at a later time on the home page.
             </li>
           </ol>
-          <h2>Removing a city</h2>
+          <h2>Removing a city:</h2>
           <p>
             If you no longer wish to track a city, simply select the city within
-            the home page. AT the bottom of the page, there will be an option to
+            the home page. At the bottom of the page, there will be an option to
             delete a city.
           </p>
         </div>
@@ -64,7 +64,7 @@ const toggleModal = () => {
   width: 100%;
   position: sticky;
   top: 0;
-  background-color: $primary-color;
+  background: rgba(29, 113, 242, 0.9);
   box-shadow: 0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1);
 
   &__container {
@@ -74,8 +74,12 @@ const toggleModal = () => {
     gap: 1rem;
     color: white;
     padding: 1rem 6rem;
-    font-size: 1.25rem;
+    font-size: 1.15rem;
     line-height: 1.25rem;
+
+    li {
+      margin: 0.5rem 0;
+    }
 
     .container {
       // need to apply to all containers -
@@ -91,21 +95,22 @@ const toggleModal = () => {
       }
 
       .icon-weather {
-        width: 3rem;
-        height: 3rem;
+        width: 2.5rem;
+        height: 2.5rem;
       }
     }
 
     .icon {
-      width: 2rem;
-      height: 2rem;
+      width: 1.5rem;
+      height: 1.5rem;
       filter: invert(99%) sepia(35%) saturate(180%) hue-rotate(109deg)
         brightness(111%) contrast(99%);
       &:hover,
       &:focus {
         transition-duration: 150ms;
         cursor: pointer;
-        filter: invert(55%) sepia(96%) saturate(3135%) hue-rotate(180deg);
+        filter: invert(74%) sepia(89%) saturate(1639%) hue-rotate(357deg)
+          brightness(99%) contrast(107%);
       }
     }
 
@@ -128,24 +133,27 @@ const toggleModal = () => {
     color: black;
 
     h1 {
-      font-size: 1.5rem;
-      line-height: 2rem;
+      font-size: 1.25rem;
+      line-height: 1.75rem;
       margin-bottom: 0.25rem;
     }
 
     h2 {
-      font-size: 1.5rem;
-      line-height: 2rem;
+      font-size: 1.2rem;
+      line-height: 1.75rem;
     }
 
     p {
+      margin-top: 0.25rem;
       margin-bottom: 1rem;
+      font-size: 1rem;
     }
 
     ol {
       list-style-type: decimal;
       list-style-position: inside;
       margin-bottom: 1rem;
+      font-size: 1rem;
     }
   }
 }
