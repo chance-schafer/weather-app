@@ -6,7 +6,7 @@
 
 <style lang="scss" scoped>
 .hero {
-  background-color: $secondary-color;
+  background-color: $grey;
   height: 900px;
   width: 100vw;
 }

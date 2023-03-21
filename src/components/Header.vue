@@ -64,7 +64,7 @@ const toggleModal = () => {
   width: 100%;
   position: sticky;
   top: 0;
-  background: rgba(29, 113, 242, 0.9);
+  background: rgba(29, 113, 242, 1);
   box-shadow: 0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1);
 
   &__container {
@@ -130,7 +130,7 @@ const toggleModal = () => {
     background-color: $secondary-color;
   }
   .modal-container {
-    color: black;
+    color: white;
 
     h1 {
       font-size: 1.25rem;

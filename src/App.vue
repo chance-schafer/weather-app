@@ -18,6 +18,6 @@ div {
   flex-direction: column;
   align-items: center;
   min-height: 100vh;
-  background-color: $primary-color;
+  background-color: $grey;
 }
 </style>

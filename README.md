@@ -25,5 +25,3 @@ npm run dev
 ```sh
 npm run build
 ```
-
-8:10

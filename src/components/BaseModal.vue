@@ -59,32 +59,30 @@ defineProps({
   height: 100vh;
 
   &__container {
-    color: black;
     background-color: white;
     align-self: flex-start;
     padding: 1rem;
-    margin-top: 8rem;
+    margin-top: 10rem;
     max-width: map-get($breakpoints, sm);
-    background: rgba(255, 255, 255, 0.4);
-    box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
-    backdrop-filter: blur(4px);
-    -webkit-backdrop-filter: blur(4px);
+    background: $primary-color;
+    opacity: 100%;
     border-radius: 10px;
-    border: 1px solid rgba(255, 255, 255, 0.18);
+    border: 1px solid rgb(0, 0, 0);
 
     button {
-      background-color: $primary-color;
-      border-radius: 4px;
+      color: black;
+      background-color: white;
+      border-radius: 10px;
       border: 0;
       box-shadow: 0 4px 16px 0 rgba(31, 38, 135, 0.37);
       box-sizing: border-box;
-      color: #fff;
       cursor: pointer;
       display: inherit;
       margin: 0 auto;
       font-size: 1rem;
       position: relative;
       text-align: center;
+      padding: 0.75rem 1.375rem;
       user-select: none;
       -webkit-user-select: none;
       touch-action: manipulation;
@@ -93,15 +91,9 @@ defineProps({
     }
 
     button:hover {
-      background-color: #065dd8;
+      background-color: black;
+      color: white;
       transform: translateY(-2px);
-    }
-
-    @media (min-width: 768px) {
-      button {
-        padding: 16px 44px;
-        min-width: 150px;
-      }
     }
   }
 }
