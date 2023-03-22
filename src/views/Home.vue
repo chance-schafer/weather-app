@@ -16,6 +16,7 @@
           <li
             v-for="searchResult in mapboxSearchResults"
             :key="searchResult.id"
+            @click="previewCity(searchResult)"
           >
             {{ searchResult.place_name }}
           </li>
@@ -30,6 +31,26 @@
 // import Hero from "../components/Hero.vue";
 import { ref } from "vue";
 import axios from "axios";
+import { useRouter } from "vue-router";
+
+const router = useRouter();
+const previewCity = (searchResult) => {
+  console.log(searchResult);
+  const [city, state] = searchResult.place_name.split(",");
+  router.push({
+    name: "cityView",
+    params: {
+      city: city,
+      state: state,
+    },
+    query: {
+      lat: searchResult.geometry.coordinates[1],
+      lng: searchResult.geometry.coordinates[0],
+      preview: true,
+    },
+  });
+  console.log(city, state);
+};
 
 const mapboxAPIKey =
   "pk.eyJ1IjoidGhlZGV2Y2hhbmNlIiwiYSI6ImNsZmhwcXJ0czBhbDczcm5tNjBoeHo5anUifQ.VUaMYEPMFksEF4sfO72cJw";
@@ -73,26 +94,27 @@ function checksInput(str) {
 
   &__container {
     padding-top: 1rem;
-    margin-bottom: 2rem;
+    margin: 0 auto 2rem auto;
     position: relative;
+    width: 80%;
 
     input {
       font-size: 1.15rem;
-      color: white;
+      color: black;
       padding: 0.5rem 0.25rem;
       width: 100%;
-      background: transparent;
+      background: white;
       border-bottom: 1px solid grey;
       text-align: center;
       border-radius: 10px;
     }
 
     input::placeholder {
-      color: white;
+      color: black;
     }
 
     input:focus {
-      color: white;
+      color: black;
       border-color: $secondary-color;
       outline: none;
       --tw-shadow-color: 0px 1px 0px 0px #004e71;
