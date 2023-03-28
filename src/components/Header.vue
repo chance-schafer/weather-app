@@ -13,7 +13,12 @@
           @click="toggleModal"
           src="@/assets/images/icon-information.svg"
         />
-        <img class="icon" src="@/assets/images/icon-plus.svg" />
+        <img
+          class="icon"
+          @click="addCity"
+          v-if="route.query.preview"
+          src="@/assets/images/icon-plus.svg"
+        />
       </div>
 
       <BaseModal :modalActive="modalActive" @close-modal="toggleModal">
@@ -51,7 +56,35 @@
 
 <script setup>
 import { ref } from "vue";
+import { uid } from "uid";
+import { RouterLink, useRoute, useRouter } from "vue-router";
 import BaseModal from "./BaseModal.vue";
+
+const savedCities = ref([]);
+const route = useRoute();
+const router = useRouter();
+const addCity = () => {
+  if (localStorage.getItem("savedCities")) {
+    savedCities.value = JSON.parse(localStorage.getItem("savedCities"));
+  }
+
+  const locationObj = {
+    id: uid(),
+    state: route.params.state,
+    city: route.params.city,
+    coors: {
+      lat: route.query.lat,
+      lng: route.query.lng,
+    },
+  };
+
+  savedCities.value.push(locationObj);
+  localStorage.setItem("savedCities", JSON.stringify(savedCities.value));
+
+  let query = Object.assign({}, route.query);
+  delete query.preview;
+  router.replace({ query });
+};
 
 const modalActive = ref(null);
 const toggleModal = () => {
