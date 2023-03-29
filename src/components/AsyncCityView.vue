@@ -97,12 +97,17 @@
         </div>
       </div>
     </div>
+
+    <div class="remove-city" @click="removeCity">
+      <img class="icon-trash" src="@/assets/images/icon-trash.svg" />
+      <p>Remove City</p>
+    </div>
   </div>
 </template>
 
 <script setup>
 import axios from "axios";
-import { useRoute } from "vue-router";
+import { useRoute, useRouter } from "vue-router";
 
 const route = useRoute();
 const getWeatherData = async () => {
@@ -130,6 +135,16 @@ const getWeatherData = async () => {
   }
 };
 const weatherData = await getWeatherData();
+
+const router = useRouter();
+const removeCity = () => {
+  const cities = JSON.parse(localStorage.getItem("savedCities"));
+  const updatedCities = cities.filter((city) => city.id !== route.query.id);
+  localStorage.setItem("savedCities", JSON.stringify(updatedCities));
+  router.push({
+    name: "home",
+  });
+};
 </script>
 
 <style scoped lang="scss">
@@ -284,6 +299,37 @@ const weatherData = await getWeatherData();
         }
       }
     }
+  }
+
+  .remove-city {
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    padding-top: 3rem;
+    padding-bottom: 3rem;
+    transition-duration: 150ms;
+    color: #ffffff;
+    align-items: center;
+    cursor: pointer;
+    gap: 0.5rem;
+
+    .icon-trash {
+      width: 1.5rem;
+      height: 1.5rem;
+      filter: invert(100%) sepia(0%) saturate(7479%) hue-rotate(70deg)
+        brightness(99%) contrast(107%);
+      &:hover,
+      &:focus {
+        transition-duration: 150ms;
+        cursor: pointer;
+        filter: invert(64%) sepia(24%) saturate(5258%) hue-rotate(163deg)
+          brightness(105%) contrast(97%);
+      }
+    }
+  }
+
+  .remove-city:hover {
+    color: $blue-3;
   }
 
   // .inner-two {
