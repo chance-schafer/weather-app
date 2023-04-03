@@ -1,7 +1,11 @@
 <template>
   <div>
     <Header />
-    <RouterView />
+    <RouterView v-slot="{ Component }">
+      <Transition name="page" mode="out-in">
+        <component :is="Component" />
+      </Transition>
+    </RouterView>
   </div>
 </template>
 
@@ -19,5 +23,15 @@ div {
   align-items: center;
   min-height: 100vh;
   background-color: $grey;
+}
+
+.page-enter-active,
+.page-leave-active {
+  transition: 600ms ease all;
+}
+
+.page-enter-from,
+.page-leave-to {
+  opacity: 0;
 }
 </style>
