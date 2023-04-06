@@ -46,7 +46,7 @@
         <h2 class="hourly-header">Hourly Weather</h2>
         <div class="hourly-weather-container-nested">
           <div
-            v-for="hourData in weatherData.data.hourly"
+            v-for="hourData in weatherData.data.hourly.slice(0, 12)"
             :key="hourData.dt"
             class="hourly-weather-container-nested-inside"
           >
