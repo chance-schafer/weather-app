@@ -41,6 +41,9 @@ defineProps({
   background-color: $primary-color;
 }
 
+.city-card:hover {
+  opacity: 70%;
+}
 .city-card-title {
   display: flex;
   flex-direction: column;
